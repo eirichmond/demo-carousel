@@ -1,5 +1,5 @@
 === Demo Carousel ===
-Contributors:      The WordPress Contributors
+Contributors:      Elliott Richmond
 Tags:              block
 Tested up to:      6.6
 Stable tag:        0.1.0
@@ -16,7 +16,7 @@ This is an interactivity block for a carousel to support a YouTube video https:/
 
 This section describes how to setup the plugin and get it working.
 
-* cd into the directory
+* Cd into the directory
 * run `npm start`
 * run `npm run plugin-zip` to create a plugin zip file
 * upload the zip file to your site
