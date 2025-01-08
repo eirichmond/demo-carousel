@@ -16,11 +16,11 @@ This is an interactivity block for a carousel to support a YouTube video https:/
 
 This section describes how to setup the plugin and get it working.
 
-• cd into the directory
-• run `npm start`
-• run `npm run plugin-zip` to create a plugin zip file
-• upload the zip file to your site
-• activate the plugin through the 'Plugins' screen in WordPress
+* cd into the directory
+* run `npm start`
+* run `npm run plugin-zip` to create a plugin zip file
+* upload the zip file to your site
+* activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
 
