@@ -12,7 +12,10 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --experimental-modules"
+		"start": "wp-scripts start --experimental-modules",
+		"lint:php": "composer run-script lint",
+		"lint:php:fix": "composer run-script format",
+		"readme": "grunt readme"
 	},
 	"files": [
 		"[^.]*"
@@ -21,6 +24,9 @@
 		"@wordpress/interactivity": "^6.14.0"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.7.0"
+		"@wordpress/scripts": "^30.7.0",
+		"grunt": "~0.4.5",
+		"grunt-wp-i18n": "~0.5.0",
+		"grunt-wp-readme-to-markdown": "~1.0.0"
 	}
 }

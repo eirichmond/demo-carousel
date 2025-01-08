@@ -1,0 +1,25 @@
+{
+    "name": "elliottrichmond/demo-carousel",
+    "description": "An interactive block with the Interactivity API.",
+    "type": "project",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Elliott Richmond",
+            "email": "elliott@squareonemd.co.uk"
+        }
+    ],
+    "scripts": {
+        "format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+        "lint": "phpcs --standard=phpcs.xml.dist"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

@@ -29,8 +29,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 
 	return (
-		<p { ...blockProps }>
+		< p { ...blockProps } >
 			{ __( 'Demo Carousel – hello from the editor!', 'demo-carousel' ) }
-		</p>
+		< / p >
 	);
 }

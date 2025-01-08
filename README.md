@@ -1,18 +1,18 @@
-=== Demo Carousel ===
-Contributors:      The WordPress Contributors
-Tags:              block
-Tested up to:      6.6
-Stable tag:        0.1.0
-License:           GPL-2.0-or-later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+# Demo Carousel #
+**Contributors:**      The WordPress Contributors  
+**Tags:**              block  
+**Tested up to:**      6.6  
+**Stable tag:**        0.1.0  
+**License:**           GPL-2.0-or-later  
+**License URI:**       https://www.gnu.org/licenses/gpl-2.0.html  
 
 An interactive block with the Interactivity API.
 
-== Description ==
+## Description ##
 
 This is an interactivity block for a carousel to support a YouTube video https://youtu.be/q8EgRPwHoRQ
 
-== Installation ==
+## Installation ##
 
 This section describes how to setup the plugin and get it working.
 
@@ -22,8 +22,8 @@ This section describes how to setup the plugin and get it working.
 • upload the zip file to your site
 • activate the plugin through the 'Plugins' screen in WordPress
 
-== Changelog ==
+## Changelog ##
 
-= 0.1.0 =
+### 0.1.0 ###
 * Release
 

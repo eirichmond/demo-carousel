@@ -11,12 +11,12 @@
  */
 
 $context = array(
-	'transform' => 'translateX(0%)',
-	'itemsTotal' => 9,
+	'transform'    => 'translateX(0%)',
+	'itemsTotal'   => 9,
 	'itemsPerView' => 3,
 	'currentIndex' => 0,
 );
-$style = sprintf( '--items-per-view: %d', $context['itemsPerView'] );
+$style   = sprintf( '--items-per-view: %d', $context['itemsPerView'] );
 ?>
 
 <div
