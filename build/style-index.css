@@ -1,0 +1,27 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-squareonesoftware-demo-carousel .carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+.wp-block-squareonesoftware-demo-carousel .carousel-wrapper .carousel-container {
+  display: flex;
+  transition: all 0.5s ease-in-out;
+}
+.wp-block-squareonesoftware-demo-carousel .carousel-wrapper .carousel-container .carousel-items {
+  background-color: lightblue;
+  display: flex;
+  min-height: 300px;
+  flex: 0 0 calc(100% / var(--items-per-view));
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

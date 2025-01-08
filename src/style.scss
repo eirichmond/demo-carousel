@@ -1,0 +1,27 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-squareonesoftware-demo-carousel {
+	
+	.carousel-wrapper {
+		overflow: hidden;
+		width: 100%;
+		.carousel-container {
+			display:flex;
+			transition: all 0.5s ease-in-out;
+			.carousel-items {
+				background-color: lightblue;
+				display: flex;
+				min-height: 300px;
+				flex: 0 0 calc( 100% / var( --items-per-view ) );
+				justify-content: space-around;
+				align-items: center;
+			}
+		}
+	}
+
+}
