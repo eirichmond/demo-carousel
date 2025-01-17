@@ -8,7 +8,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-squareonesoftware-demo-carousel {
-  background-color: blue;
+  background-color: rgb(213, 213, 213);
 }
 .wp-block-squareonesoftware-demo-carousel .carousel-wrapper {
   overflow: hidden;
