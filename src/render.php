@@ -10,11 +10,13 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+var_dump($attributes);
+
 $context = array(
 	'transform'    => 'translateX(0%)',
-	'itemsTotal'   => 9,
-	'itemsPerView' => 3,
-	'currentIndex' => 0,
+	'itemsTotal'   => $attributes['itemsTotal'],
+	'itemsPerView' => $attributes['itemsPerView'],
+	'currentIndex' => $attributes['currentIndex'],
 );
 $style   = sprintf( '--items-per-view: %d', $context['itemsPerView'] );
 ?>
