@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+
+/**
+ * React components
+ */
+import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -26,11 +31,37 @@ import { useBlockProps } from "@wordpress/block-editor";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
+
+	const { itemsTotal, itemsPerView, currentIndex } = attributes;
+
 	const blockProps = useBlockProps();
 
 	return (
-		<p {...blockProps}>
-			{__("Demo Carousel – hello from the editor!", "demo-carousel")}
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={__("Carousel Settings", "demo-carousel")}>
+					<RangeControl
+						label={__("Total items in the slider", "demo-carousel")}
+						value={itemsTotal}
+						onChange={value => setAttributes({ itemsTotal: value })}
+						min={1}
+						max={20}
+					/>
+					<RangeControl
+						label={__("Items Per View", "demo-carousel")}
+						value={itemsPerView}
+						onChange={value =>
+							setAttributes({ itemsPerView: value })
+						}
+						min={1}
+						max={10}
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<div {...blockProps}>
+				{__("Demo Carousel – hello from the editor!", "demo-carousel")}
+			</div>
+		</>
 	);
 }
