@@ -55,9 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<RangeControl
 						label={__("Items Per View", "demo-carousel")}
 						value={itemsPerView}
-						onChange={value =>
-							setAttributes({ itemsPerView: value })
-						}
+						onChange={value => setAttributes({ itemsPerView: value })}
 						min={1}
 						max={10}
 					/>
