@@ -43,7 +43,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<RangeControl
 						label={__("Total items in the slider", "demo-carousel")}
 						value={itemsTotal}
-						onChange={value => setAttributes({ itemsTotal: value })}
+						onChange={value =>
+							setAttributes({ itemsTotal: value })}
 						min={1}
 						max={20}
 					/>

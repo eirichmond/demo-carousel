@@ -9,7 +9,7 @@
   "description": "An interactive block with the Interactivity API.",
   "attributes": {
     "itemsTotal": {
-      "type": "string",
+      "type": "number",
       "default": "9"
     },
     "itemsPerView": {
