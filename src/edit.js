@@ -34,7 +34,12 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const { itemsTotal, itemsPerView, currentIndex } = attributes;
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps({
+		style: {
+			"--items-per-view": itemsPerView,
+			"--current-index": currentIndex,
+		},
+	});
 
 	return (
 		<>
@@ -43,8 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<RangeControl
 						label={__("Total items in the slider", "demo-carousel")}
 						value={itemsTotal}
-						onChange={value =>
-							setAttributes({ itemsTotal: value })}
+						onChange={value => setAttributes({ itemsTotal: value })}
 						min={1}
 						max={20}
 					/>
@@ -61,7 +65,23 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 
 			<div {...blockProps}>
-				{__("Demo Carousel – hello from the editor!", "demo-carousel")}
+				<div className='carousel-wrapper'>
+					<div
+						className='carousel-container'
+						style={{
+							transform: `translateX(${-(
+								currentIndex *
+								(100 / itemsPerView)
+							)}%)`,
+							flex: `0 0 calc( 100% / var( ${itemsPerView} ) )`,
+						}}>
+						{Array.from({ length: itemsTotal }).map((_, index) => (
+							<div key={index} className='carousel-items'>
+								{index + 1}
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		</>
 	);
