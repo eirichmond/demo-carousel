@@ -7,6 +7,20 @@
   "category": "widgets",
   "icon": "media-interactive",
   "description": "An interactive block with the Interactivity API.",
+  "attributes": {
+    "itemsTotal": {
+      "type": "number",
+      "default": "9"
+    },
+    "itemsPerView": {
+      "type": "number",
+      "default": "3"
+    },
+    "currentIndex": {
+      "type": "number",
+      "default": "0"
+    }
+  },
   "example": {},
   "supports": {
     "interactivity": true
