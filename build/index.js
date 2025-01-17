@@ -68,6 +68,20 @@ function Edit({
       "--current-index": currentIndex
     }
   });
+
+  // Navigation handlers
+  const moveBack = () => {
+    const newIndex = (currentIndex + itemsPerView) % itemsTotal;
+    setAttributes({
+      currentIndex: newIndex
+    });
+  };
+  const moveForward = () => {
+    const newIndex = (currentIndex - itemsPerView + itemsTotal) % itemsTotal;
+    setAttributes({
+      currentIndex: newIndex
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -100,7 +114,7 @@ function Edit({
           viewBox: "0 0 24 24",
           fill: "none",
           xmlns: "http://www.w3.org/2000/svg",
-          "data-wp-on--click": "actions.moveBack",
+          onClick: moveBack,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
             d: "M11 9L8 12M8 12L11 15M8 12H16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z",
             stroke: "#000000",
@@ -114,7 +128,7 @@ function Edit({
           viewBox: "0 0 24 24",
           fill: "none",
           xmlns: "http://www.w3.org/2000/svg",
-          "data-wp-on--click": "actions.moveForward",
+          onClick: moveForward,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
             d: "M13 15L16 12M16 12L13 9M16 12H8M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z",
             stroke: "#000000",
