@@ -114,12 +114,6 @@ function Edit({
     });
   }, [postType, itemsTotal]);
 
-  // Map posts to block contexts
-  const blockContexts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useMemo)(() => posts?.map(post => ({
-    postType: post.type,
-    postId: post.id
-  })), [posts]);
-
   // Handle loading state
   if (!posts) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {

@@ -79,16 +79,6 @@ export default function Edit({ attributes, setAttributes }) {
 		[postType, itemsTotal]
 	);
 
-	// Map posts to block contexts
-	const blockContexts = useMemo(
-		() =>
-			posts?.map(post => ({
-				postType: post.type,
-				postId: post.id,
-			})),
-		[posts]
-	);
-
 	// Handle loading state
 	if (!posts) {
 		return (
