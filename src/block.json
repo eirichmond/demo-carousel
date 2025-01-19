@@ -19,6 +19,10 @@
 		"currentIndex": {
 			"type": "number",
 			"default": "0"
+		},
+		"postType": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"example": {},

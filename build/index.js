@@ -329,7 +329,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"squareonesoftware/demo-carousel","version":"0.1.0","title":"Demo Carousel","category":"widgets","icon":"media-interactive","description":"An interactive block with the Interactivity API.","attributes":{"itemsTotal":{"type":"number","default":"9"},"itemsPerView":{"type":"number","default":"3"},"currentIndex":{"type":"number","default":"0"}},"example":{},"supports":{"interactivity":true},"textdomain":"demo-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScriptModule":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"squareonesoftware/demo-carousel","version":"0.1.0","title":"Demo Carousel","category":"widgets","icon":"media-interactive","description":"An interactive block with the Interactivity API.","attributes":{"itemsTotal":{"type":"number","default":"9"},"itemsPerView":{"type":"number","default":"3"},"currentIndex":{"type":"number","default":"0"},"postType":{"type":"string","default":""}},"example":{},"supports":{"interactivity":true},"textdomain":"demo-carousel","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScriptModule":"file:./view.js"}');
 
 /***/ })
 
