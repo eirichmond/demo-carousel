@@ -16,12 +16,17 @@ import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 /**
  * React components
  */
-import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
+import { PanelBody, RangeControl, SelectControl, Spinner } from "@wordpress/components";
 
 /**
  * React data
  */
 import { useSelect } from "@wordpress/data";
+
+/**
+ * React element
+ */
+import { useMemo } from "@wordpress/element";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -62,6 +67,45 @@ export default function Edit({ attributes, setAttributes }) {
 			(currentIndex - itemsPerView + itemsTotal) % itemsTotal;
 		setAttributes({ currentIndex: newIndex });
 	};
+
+	// Fetch posts dynamically for the selected post type
+	const posts = useSelect(
+		select => {
+			if (!postType) return [];
+			return select("core").getEntityRecords("postType", postType, {
+				per_page: itemsTotal,
+			});
+		},
+		[postType, itemsTotal]
+	);
+
+	// Map posts to block contexts
+	const blockContexts = useMemo(
+		() =>
+			posts?.map(post => ({
+				postType: post.type,
+				postId: post.id,
+			})),
+		[posts]
+	);
+
+	// Handle loading state
+	if (!posts) {
+		return (
+			<div {...blockProps}>
+				<Spinner />
+			</div>
+		);
+	}
+
+	// Handle no posts found
+	if (!posts.length) {
+		return (
+			<div {...blockProps}>
+				<p>{__("No posts found.", "demo-carousel")}</p>
+			</div>
+		);
+	}
 
 	return (
 		<>
