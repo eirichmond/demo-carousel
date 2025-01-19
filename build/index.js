@@ -55,6 +55,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
+ * Default InnerBlocks template
+ */
+
+const TEMPLATE = [["core/post-title"], ["core/post-content"]];
+
+/**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
@@ -66,7 +72,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-
 function Edit({
   attributes,
   setAttributes
@@ -113,6 +118,12 @@ function Edit({
       per_page: itemsTotal
     });
   }, [postType, itemsTotal]);
+
+  // Map posts to block contexts
+  const blockContexts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useMemo)(() => posts?.map(post => ({
+    postType: post.type,
+    postId: post.id
+  })), [posts]);
 
   // Handle loading state
   if (!posts) {
@@ -211,11 +222,28 @@ function Edit({
             length: itemsTotal
           }).map((_, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "carousel-items",
-            children: index + 1
+            children: blockContexts[index] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockContextProvider, {
+              value: blockContexts[index],
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(PostTemplateInnerBlocks, {})
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {})
           }, index))
         })
       })]
     })]
+  });
+}
+
+// Render individual items with a post template
+function PostTemplateInnerBlocks() {
+  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)({
+    className: "carousel-post-template"
+  }, {
+    template: TEMPLATE,
+    allowedBlocks: ["core/post-title", "core/post-date", "core/post-excerpt", "core/image"],
+    __unstableDisableLayoutClassNames: true // Avoid layout-specific classnames
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    ...innerBlocksProps
   });
 }
 

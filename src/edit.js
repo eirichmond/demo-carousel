@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import { useBlockProps, InspectorControls, BlockContextProvider, useInnerBlocksProps } from "@wordpress/block-editor";
 
 /**
  * React components
@@ -27,6 +27,14 @@ import { useSelect } from "@wordpress/data";
  * React element
  */
 import { useMemo } from "@wordpress/element";
+
+/**
+ * Default InnerBlocks template
+ */
+const TEMPLATE = [
+	["core/post-title"],
+	["core/post-content"],
+];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -77,6 +85,16 @@ export default function Edit({ attributes, setAttributes }) {
 			});
 		},
 		[postType, itemsTotal]
+	);
+
+	// Map posts to block contexts
+	const blockContexts = useMemo(
+		() =>
+			posts?.map(post => ({
+				postType: post.type,
+				postId: post.id,
+			})),
+		[posts]
 	);
 
 	// Handle loading state
@@ -184,7 +202,14 @@ export default function Edit({ attributes, setAttributes }) {
 						}}>
 						{Array.from({ length: itemsTotal }).map((_, index) => (
 							<div key={index} className='carousel-items'>
-								{index + 1}
+								{blockContexts[index] ? (
+									<BlockContextProvider
+										value={blockContexts[index]}>
+										<PostTemplateInnerBlocks />
+									</BlockContextProvider>
+								) : (
+									<Spinner />
+								)}
 							</div>
 						))}
 					</div>
@@ -192,4 +217,18 @@ export default function Edit({ attributes, setAttributes }) {
 			</div>
 		</>
 	);
+}
+
+// Render individual items with a post template
+function PostTemplateInnerBlocks() {
+	const innerBlocksProps = useInnerBlocksProps(
+		{ className: "carousel-post-template" },
+		{
+			template: TEMPLATE,
+			allowedBlocks: ["core/post-title", "core/post-date", "core/post-excerpt", "core/image"],
+			__unstableDisableLayoutClassNames: true, // Avoid layout-specific classnames
+		}
+	);
+
+	return <div {...innerBlocksProps} />;
 }
