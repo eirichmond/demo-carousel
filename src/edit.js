@@ -19,6 +19,11 @@ import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
 
 /**
+ * React data
+ */
+import { useSelect } from "@wordpress/data";
+
+/**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
@@ -31,7 +36,7 @@ import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { itemsTotal, itemsPerView, currentIndex } = attributes;
+	const { itemsTotal, itemsPerView, currentIndex, postType } = attributes;
 
 	const blockProps = useBlockProps({
 		style: {
@@ -40,6 +45,12 @@ export default function Edit({ attributes, setAttributes }) {
 		},
 	});
 
+	// Fetch all post types dynamically
+	const postTypes = useSelect(select => {
+		const types = select("core").getPostTypes({ per_page: -1 });
+		return types?.filter(type => !type.viewable === false); // Only include viewable post types
+	}, []);
+
 	// Navigation handlers
 	const moveBack = () => {
 		const newIndex = (currentIndex + itemsPerView) % itemsTotal;
@@ -47,7 +58,8 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const moveForward = () => {
-		const newIndex = (currentIndex - itemsPerView + itemsTotal) % itemsTotal;
+		const newIndex =
+			(currentIndex - itemsPerView + itemsTotal) % itemsTotal;
 		setAttributes({ currentIndex: newIndex });
 	};
 
@@ -55,6 +67,24 @@ export default function Edit({ attributes, setAttributes }) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__("Carousel Settings", "demo-carousel")}>
+					<SelectControl
+						label={__("Post Type", "demo-carousel")}
+						value={postType}
+						options={[
+							{
+								label: __(
+									"Select a post type",
+									"demo-carousel"
+								),
+								value: "",
+							},
+							...(postTypes?.map(type => ({
+								label: type.labels?.singular_name || type.name,
+								value: type.slug,
+							})) || []),
+						]}
+						onChange={value => setAttributes({ postType: value })}
+					/>
 					<RangeControl
 						label={__("Total items in the slider", "demo-carousel")}
 						value={itemsTotal}
