@@ -16,7 +16,7 @@ import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 /**
  * React components
  */
-import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
+import { PanelBody, RangeControl } from "@wordpress/components";
 
 /**
  * The edit function describes the structure of your block in the context of the
