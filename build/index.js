@@ -239,7 +239,7 @@ function PostTemplateInnerBlocks() {
     className: "carousel-post-template"
   }, {
     template: TEMPLATE,
-    allowedBlocks: ["core/post-title", "core/post-date", "core/post-excerpt", "core/image"],
+    allowedBlocks: ["core/post-title", "core/post-content"],
     __unstableDisableLayoutClassNames: true // Avoid layout-specific classnames
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
