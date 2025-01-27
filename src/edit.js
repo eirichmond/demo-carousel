@@ -106,15 +106,6 @@ export default function Edit({ attributes, setAttributes }) {
 		);
 	}
 
-	// Handle no posts found
-	if (!posts.length) {
-		return (
-			<div {...blockProps}>
-				<p>{__("No posts found.", "demo-carousel")}</p>
-			</div>
-		);
-	}
-
 	return (
 		<>
 			<InspectorControls>
